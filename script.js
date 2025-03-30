@@ -151,3 +151,37 @@ if (window.matchMedia("(pointer: fine)").matches) {
         });
     });
 }
+
+// skill bar
+
+const skillBars = document.querySelectorAll('.skill-fill');
+const skillSection = document.querySelectorAll('.skill');
+
+const skillObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.width = entry.target.getAttribute('style').split(':')[1];
+        }
+    });
+}, { threshold: 0.5 });
+
+skillBars.forEach(bar => skillObserver.observe(bar));
+
+// theme
+// Dark/Light Mode Toggle
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Check for saved theme preference (optional)
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    body.classList.add(savedTheme);
+}
+
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('light-mode');
+    
+    // Save preference to localStorage (optional)
+    const currentTheme = body.classList.contains('light-mode') ? 'light-mode' : '';
+    localStorage.setItem('theme', currentTheme);
+});
