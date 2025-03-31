@@ -386,38 +386,108 @@ h2 {
 
 
 /* Projects Section */
-.projects-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    max-width: 1200px;
+/* Projects Section */
+#projects {
+    padding: 80px 20px;
+    background: #1e1e1e;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
-.project {
-    background: #333;
-    padding: 20px;
-    border-radius: 5px;
-    width: 300px;
-    text-align: left;
-    transition: transform 0.3s;
+.project-card {
+    background: #2a2a2a;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.4s, box-shadow 0.4s;
 }
 
-.project:hover {
+.project-card:hover {
     transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 98, 0, 0.2);
 }
 
-.project h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+.project-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
 }
 
-.project p {
-    font-size: 1em;
-    margin-bottom: 15px;
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
 }
 
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(255, 98, 0, 0.7), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-content {
+    padding: 25px;
+}
+
+.project-tech {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.project-tech span {
+    background: rgba(255, 98, 0, 0.2);
+    color: #ff6200;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+}
+
+.project-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Featured Project */
+.project-card.featured {
+    grid-column: span 2;
+}
+
+.project-card.featured .project-image {
+    height: 350px;
+}
+
+/* Secondary Button */
+.btn.secondary {
+    background: transparent;
+    border: 1px solid #ff6200;
+    color: #ff6200;
+}
+
+.btn.secondary:hover {
+    background: rgba(255, 98, 0, 0.1);
+}
     .social-links {
     display: flex;
     justify-content: center;
@@ -625,5 +695,53 @@ body.light-mode {
 
 .light-mode .vertical-email a:hover {
     opacity: 1;
-    color: #fff;
+    color: #000000;
+}
+
+.light-mode #hero {
+    background: #f5f5f5;
+}
+
+body.light-mode #projects {
+    background: #f8f8f8;
+}
+
+body.light-mode .project-card {
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .project-card:hover {
+    box-shadow: 0 15px 30px rgba(255, 98, 0, 0.15);
+}
+
+body.light-mode .project-content {
+    color: #333;
+}
+
+body.light-mode .project-tech span {
+    background: rgba(255, 98, 0, 0.1);
+    color: #ff6200;
+}
+
+body.light-mode .project-overlay {
+    background: linear-gradient(to top, rgba(255, 98, 0, 0.5), transparent);
+}
+
+body.light-mode .btn.secondary {
+    border-color: #ff6200;
+    color: #ffffff;
+}
+
+body.light-mode .btn.secondary:hover {
+    background: rgb(255, 98, 0);
+}
+
+/* Project card text contrast */
+body.light-mode .project-card h3 {
+    color: #222;
+}
+
+body.light-mode .project-card p {
+    color: #555;
 }
