@@ -185,3 +185,4 @@ themeToggle.addEventListener('click', () => {
     const currentTheme = body.classList.contains('light-mode') ? 'light-mode' : '';
     localStorage.setItem('theme', currentTheme);
 });
+
