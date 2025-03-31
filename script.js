@@ -212,3 +212,74 @@ document.addEventListener('touchend', () => {
     cursorDot.classList.remove('clicked');
     cursorRing.classList.remove('clicked');
 });
+
+// Cursor-following background gradient
+document.addEventListener('mousemove', (e) => {
+    const x = e.clientX / window.innerWidth;
+    const y = e.clientY / window.innerHeight;
+    
+    document.body.style.setProperty('--cursor-x', x);
+    document.body.style.setProperty('--cursor-y', y);
+    
+    const gradient = document.querySelector('body::before');
+    if (gradient) {
+        gradient.style.transform = `translate(
+            calc(-50% + ${(x - 0.5) * 100}px), 
+            calc(-50% + ${(y - 0.5) * 100}px)
+        )`;
+    }
+});
+
+// Combine with your existing float animation
+const bgGradient = document.createElement('style');
+bgGradient.innerHTML = `
+    body::before {
+        left: calc(var(--cursor-x, 0.5) * 100%);
+        top: calc(var(--cursor-y, 0.5) * 100%);
+        animation: float 20s infinite linear;
+    }
+`;
+document.head.appendChild(bgGradient);
+
+// Cursor position variables
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+let gradientX = mouseX;
+let gradientY = mouseY;
+const followSpeed = 0.03; // Lower = more delay (0.02-0.1 works best)
+
+// Update mouse position
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
+
+// Smooth follow animation loop
+function animateGradient() {
+    // Calculate distance to move
+    const dx = mouseX - gradientX;
+    const dy = mouseY - gradientY;
+    
+    // Apply easing
+    gradientX += dx * followSpeed;
+    gradientY += dy * followSpeed;
+    
+    // Update CSS custom properties
+    document.documentElement.style.setProperty('--gradient-x', `${gradientX}px`);
+    document.documentElement.style.setProperty('--gradient-y', `${gradientY}px`);
+    
+    requestAnimationFrame(animateGradient);
+}
+
+// Initialize gradient position styles
+const gradientStyle = document.createElement('style');
+gradientStyle.textContent = `
+    body::before {
+        left: var(--gradient-x, 50%);
+        top: var(--gradient-y, 50%);
+    }
+`;
+document.head.appendChild(gradientStyle);
+
+// Start animation
+animateGradient();
