@@ -22,24 +22,6 @@ sections.forEach(section => {
     observer.observe(section);
 });
 
-// Scroll to Top Button
-const scrollTopBtn = document.getElementById('scrollTop');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        scrollTopBtn.classList.add('visible');
-    } else {
-        scrollTopBtn.classList.remove('visible');
-    }
-});
-
-scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
 // Typewriter Effect for Dynamic Text
 const dynamicText = document.getElementById('dynamic-text');
 const titles = [
@@ -167,22 +149,66 @@ const skillObserver = new IntersectionObserver(entries => {
 
 skillBars.forEach(bar => skillObserver.observe(bar));
 
-// theme
-// Dark/Light Mode Toggle
+
+// Theme Toggle Functionality
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
-// Check for saved theme preference (optional)
-const savedTheme = localStorage.getItem('theme');
+// Check for saved theme preference or system preference
+const savedTheme = localStorage.getItem('theme') || 
+                  (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light-mode' : '');
+
+
 if (savedTheme) {
     body.classList.add(savedTheme);
+    themeToggle.checked = savedTheme === 'light-mode';
 }
 
-themeToggle.addEventListener('click', () => {
+themeToggle.addEventListener('change', () => {
     body.classList.toggle('light-mode');
-    
-    // Save preference to localStorage (optional)
     const currentTheme = body.classList.contains('light-mode') ? 'light-mode' : '';
     localStorage.setItem('theme', currentTheme);
+    
+    // Update cursor colors based on theme
+    updateCursorColors();
 });
 
+function updateCursorColors() {
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorRing = document.querySelector('.cursor-ring');
+    
+    if (body.classList.contains('light-mode')) {
+        cursorDot.style.background = 'rgba(0, 0, 0, 0.7)';
+        cursorRing.style.borderColor = 'rgba(0, 0, 0, 0.5)';
+    } else {
+        cursorDot.style.background = '#ff6200';
+        cursorRing.style.borderColor = 'rgb(255, 100, 0, 0.5)';
+    }
+}
+
+// Initialize cursor colors
+updateCursorColors();
+
+
+
+// Click effect for cursor
+document.addEventListener('mousedown', () => {
+    cursorDot.classList.add('clicked');
+    cursorRing.classList.add('clicked');
+});
+
+document.addEventListener('mouseup', () => {
+    cursorDot.classList.remove('clicked');
+    cursorRing.classList.remove('clicked');
+});
+
+// Touch support for mobile
+document.addEventListener('touchstart', () => {
+    cursorDot.classList.add('clicked');
+    cursorRing.classList.add('clicked');
+});
+
+document.addEventListener('touchend', () => {
+    cursorDot.classList.remove('clicked');
+    cursorRing.classList.remove('clicked');
+});

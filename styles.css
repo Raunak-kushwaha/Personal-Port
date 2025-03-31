@@ -4,20 +4,19 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: none !important; /* Hide the default cursor everywhere */
+    cursor: none !important;
 }
 
-/* Ensure cursor is hidden on all states of interactive elements */
 html, body, a, button, div, span, p, h1, h2, h3, h4, h5, h6, li, ul, nav, section {
     cursor: none !important;
 }
 
-a:hover, button:hover, div:hover, span:hover, li:hover, .skill:hover, .project:hover, .btn:hover, .scroll-top-btn:hover, .nav-links li a:hover {
+a:hover, button:hover, div:hover, span:hover, li:hover, .project:hover, .btn:hover, .scroll-top-btn:hover, .nav-links li a:hover {
     cursor: none !important;
 }
 
 html {
-    scroll-behavior: smooth; /* Enables smooth scrolling */
+    scroll-behavior: smooth;
 }
 
 body {
@@ -26,10 +25,9 @@ body {
     color: #fff;
     line-height: 1.5;
     overflow-x: hidden;
-    padding-top: 80px; /* Offset for fixed navbar */
+    padding-top: 80px;
 }
 
-/* Custom Cursor */
 .cursor-dot {
     position: fixed;
     width: 4px;
@@ -39,8 +37,9 @@ body {
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
-    transition: background 0.2s ease, transform 0.2s ease; /* Only apply transition to hover effects */
+    transition: transform 0.1s cubic-bezier(0.22, 1, 0.36, 1), background 0.1s ease;
 }
+
 
 .cursor-ring {
     position: fixed;
@@ -51,10 +50,22 @@ body {
     pointer-events: none;
     z-index: 9998;
     transform: translate(-50%, -50%);
-    transition: border-color 0.2s ease, transform .2s ease; /* Only apply transition to hover effects */
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
 }
 
-/* Hover Effects for Interactive Elements */
+.cursor-dot.clicked {
+    transform: translate(-50%, -50%) scale(4);
+    background: #ffffff;
+    opacity: 0.5;
+    
+}
+
+.cursor-ring.clicked {
+    transform: translate(-50%, -50%) scale(0.5);
+    border-color: #ffffff90;
+    opacity: 0;
+}
+
 .cursor-dot.active {
     transform: translate(-50%, -50%) scale(3.5);
     background: #ffffffcc;
@@ -65,17 +76,16 @@ body {
     border-color: #ffffff90;
 }
 
-/* Hide Custom Cursor on Touch Devices */
 @media (pointer: coarse) {
     .cursor-dot, .cursor-ring {
-        display: none; /* Hide custom cursor on touch devices */
+        display: none;
     }
 }
 
 .vertical-social {
     position: fixed;
     left: 65px;
-    top: 70%;
+    top: 65%;
     transform: rotate(-90deg) translateX(-50%) translateY(-50%);
     transform-origin: left center;
     display: flex;
@@ -87,9 +97,9 @@ body {
 .vertical-social::before {
     content: "";
     display: block;
-    width: 2px; /* Line thickness */
-    height: 30px; /* Line length */
-    background: #ff6200; /* Orange to match theme */
+    width: 2px;
+    height: 30px;
+    background: #ff6200;
     opacity: 0.7;
     transform: rotate(-90deg) translateX(-50%) translateY(-50%);
 }
@@ -107,28 +117,25 @@ body {
     color: #fff;
 }
 
-/* Navbar */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.01); /* Glassmorphism effect */
-    backdrop-filter: blur(3px); /* Blurred background */
-    -webkit-backdrop-filter: blur(3px); /* Safari support */
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 15px 40px;
     z-index: 1000;
-
-
 }
 
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 20px; /* Space between nav links and toggle button */
+    gap: 20px;
 }
 
 .nav-logo .profile-img {
@@ -154,7 +161,7 @@ body {
     font-size: 1.1em;
     font-weight: 400;
     transition: color 0.3s, transform 0.3s ease-in-out;
-    display: inline-block; /* Ensures smooth scaling */
+    display: inline-block;
 }
 
 .nav-links li a:hover {
@@ -162,13 +169,10 @@ body {
     transform: scale(1.1);
 }
 
-
-
-/* Vertical Email (Right Side) */
 .vertical-email {
     position: fixed;
     right: 80px;
-    top: 64.765%;
+    top: 67%;
     transform: rotate(90deg) translateX(50%) translateY(-50%);
     transform-origin: right center;
     z-index: 1001;
@@ -188,10 +192,9 @@ body {
     color: #fff;
 }
 
-/* Hero Section */
 #hero {
     min-height: 100vh;
-    background: #232931;
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -212,8 +215,8 @@ body {
 }
 
 #dynamic-text {
-    color: #ff6200; /* Highlight the changing text */
-    border-right: 2px solid #ff6200; /* Blinking cursor effect */
+    color: #ff6200;
+    border-right: 2px solid #ff6200;
     white-space: nowrap;
     overflow: hidden;
     animation: blinkCursor 0.7s step-end infinite;
@@ -234,6 +237,7 @@ body {
     border-radius: 5px;
     font-weight: 400;
     transition: background 0.3s, transform 0.3s;
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.600);
 }
 
 .btn:hover {
@@ -241,7 +245,6 @@ body {
     transform: scale(1.05);
 }
 
-/* General Section Styling */
 section {
     padding: 60px 20px;
     text-align: center;
@@ -253,7 +256,6 @@ h2 {
     font-weight: 600;
 }
 
-/* Animation */
 .animate {
     opacity: 0;
     transform: translateY(50px);
@@ -265,7 +267,6 @@ h2 {
     transform: translateY(0);
 }
 
-/* About Section */
 .about-section {
     text-align: center;
     color: white;
@@ -281,7 +282,7 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 50px; /* Adjust spacing between text and image */
+    gap: 50px;
     max-width: 900px;
     margin: auto;
 }
@@ -293,15 +294,14 @@ h2 {
 }
 
 .about-image img {
-    width: 200px; /* Adjust as needed */
+    width: 200px;
     height: 200px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #ff6200; /* Optional */
+    border: 3px solid #ff6200;
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.600);
 }
 
-/* Ensure proper alignment on smaller screens */
 @media (max-width: 768px) {
     .about-container {
         flex-direction: column;
@@ -312,61 +312,49 @@ h2 {
     }
 }
 
-
-/* Ensure proper alignment on smaller screens */
-@media (max-width: 768px) {
-    .about {
-        flex-direction: column;
-        text-align: center;
-    }
-    .about-text {
-        max-width: 80%;
-    }
-}
-
-/* Skills Section */
 .skills-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusts based on screen size */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    max-width: 900px; /* Adjust width based on design */
+    max-width: 900px;
     margin: 0 auto;
 }
 
-/* Individual Skill */
 .skill {
-    background: #333;
+    background: #232931;
     padding: 15px;
     border-radius: 8px;
     font-size: 1em;
-    transition: transform 0.3s;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.600);
 }
 
-/* Skill Label */
 .skill span {
     font-weight: bold;
     display: flex;
     align-items: center;
-    gap: 10px; /* Space between icon and text */
+    gap: 10px;
 }
 
 .skill span i {
-    font-size: 1.2em; /* Adjust icon size */
-    color: #ff6a00; /* Icon color */
+    font-size: 1.2em;
+    color: #ff6200;
 }
 
 .skill span .icon {
-    width: 24px; /* Set icon size */
+    width: 24px;
     height: 24px;
     object-fit: contain;
 }
 
-/* Hover Effect */
 .skill:hover {
     transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+    
 }
 
-/* Skill Bar */
 .skill-bar {
     width: 100%;
     background: #ddd;
@@ -376,20 +364,16 @@ h2 {
     position: relative;
 }
 
-/* Progress Fill */
 .skill-fill {
     height: 100%;
-    background: linear-gradient(to right, #ff6a00, #ee0979);
+    background: #ff6200;
     width: 0;
     transition: width 1.5s ease-in-out;
 }
 
-
-/* Projects Section */
-/* Projects Section */
 #projects {
     padding: 80px 20px;
-    background: #1e1e1e;
+    background: #2329317e;
 }
 
 .projects-grid {
@@ -405,10 +389,12 @@ h2 {
     border-radius: 15px;
     overflow: hidden;
     transition: transform 0.4s, box-shadow 0.4s;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.600);
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
+    transform: scale(1.01);
+    transform: transform 5s ease-in-out;
     box-shadow: 0 15px 30px rgba(255, 98, 0, 0.2);
 }
 
@@ -435,7 +421,6 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, rgba(255, 98, 0, 0.7), transparent);
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -478,7 +463,6 @@ h2 {
     height: 350px;
 }
 
-/* Secondary Button */
 .btn.secondary {
     background: transparent;
     border: 1px solid #ff6200;
@@ -488,38 +472,117 @@ h2 {
 .btn.secondary:hover {
     background: rgba(255, 98, 0, 0.1);
 }
-    .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
+
+/* New Theme Switch Styles */
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-left: 20px;
 }
 
-/* Scroll to Top Button */
-.scroll-top-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #ff6200;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.2em;
+.theme-switch input {
     opacity: 0;
-    transition: opacity 0.3s, transform 0.3s;
+    width: 0;
+    height: 0;
 }
 
-.scroll-top-btn.visible {
-    opacity: 1;
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ff6200;
+    transition: .4s;
+    border-radius: 34px;
 }
 
-.scroll-top-btn:hover {
-    transform: scale(1.1);
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
 }
 
-/* Contact Section Layout */
+input:checked + .slider {
+    background-color: #ff6200;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Light Mode Styles (keep your existing ones) */
+body.light-mode {
+    background: #f9f9fb;
+    color: #333;
+}
+
+.light-mode .navbar {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .nav-links li a {
+    color: #333;
+}
+
+.light-mode .nav-links li a:hover {
+    color: rgb(255, 98, 0);
+}
+
+.light-mode .btn {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.light-mode .skill {
+    background: #f9f9fb;
+    color: #333;
+    
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.light-mode .project-card {
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.light-mode #projects {
+    background: #f9f9fb7e;
+}
+
+.light-mode .about-section {
+    
+
+    color: #333;
+}
+
+.light-mode footer {
+    background: #f8f9faf2;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-mode footer p {
+    color: #000000b3;
+}
+
+.light-mode .hello-btn {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+body, .project-card, .skill, .navbar, footer {
+    transition: background 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+}
+
 #contact {
     display: flex;
     flex-direction: column;
@@ -529,18 +592,15 @@ h2 {
 }
 
 .contact-content {
-    margin-bottom: 15px; /* Space between text and button */
+    margin-bottom: 15px;
     max-width: 700px;
     font-size: 20px;
 }
 
 .contact-button {
-    margin-top: 15px; /* Extra spacing */
+    margin-top: 15px;
     margin-bottom: 100px;
 }
-
-/* Say Hello Button */
-
 
 .hello-btn {
     display: inline-block;
@@ -556,6 +616,10 @@ h2 {
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.600);
 }
 
 .hello-btn:hover {
@@ -565,7 +629,6 @@ h2 {
     transform: translateY(-5px);
 }
 
-/* Optional: Animated ring effect */
 .hello-btn::after {
     content: '';
     position: absolute;
@@ -580,19 +643,14 @@ h2 {
 }
 
 @keyframes ring-pulse {
-    0% {
-        transform: scale(0.8);
-        opacity: 0.7;
-    }
-    100% {
-        transform: scale(1.3);
-        opacity: 0;
-    }
+    0% { transform: scale(0.8); opacity: 0.7; }
+    100% { transform: scale(1.3); opacity: 0; }
 }
 
 .hello-btn:hover::after {
     animation: ring-pulse 1.5s infinite;
 }
+
 @media (max-width: 768px) {
     .hello-btn {
         padding: 12px 30px;
@@ -603,145 +661,79 @@ h2 {
     }
 }
 
-/* theme */
-/* Theme Toggle Button */
-.theme-toggle-btn {
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-size: 1.5em;
-    cursor: none;
-    padding: 5px;
-    transition: transform 0.3s;
+
+footer {
+    background: rgba(35, 41, 49, 0.600);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 30px 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 60px;
+    position: relative;
 }
 
-.theme-toggle-btn:hover {
-    transform: scale(1.1);
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
-/* Light Mode Styles */
-body.light-mode {
-    background: #f5f5f5;
-    color: #333;
+footer p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin: 0;
 }
 
-.light-mode .navbar {
-    background: rgba(255, 255, 255, 0.9);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+body.light-mode footer {
+    background: rgba(217, 221, 226, 0.8);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.light-mode .nav-links li a {
-    color: #333;
+body.light-mode footer p {
+    color: rgba(0, 0, 0, 0.7);
 }
 
-.light-mode .vertical-text,
-.light-mode #hero,
-.light-mode .skill,
-.light-mode .project,
-.light-mode .btn {
-    color: #333;
-    background: #fff;
-    border-color: #ddd;
+@media (max-width: 768px) {
+    footer {
+        padding: 25px 0;
+    }
+    .footer-content {
+        gap: 15px;
+    }
 }
 
-.light-mode .btn {
-    background: #ff6200;
-    color: #fff;
+@keyframes float-up {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
 }
 
-.light-mode #dynamic-text {
-    color: #ff6200;
+footer {
+    animation: float-up 0.6s ease-out forwards;
 }
 
-.light-mode .about-section {
-    background: #fff;
-    color: #333;
+body::before {
+    content: "";
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 98, 0, 0.05) 0%, transparent 70%);
+    z-index: -1;
+    animation: float 15s infinite alternate;
 }
 
-.light-mode .cursor-dot {
-    background: #ff6200;
+@keyframes float {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
 }
 
-.light-mode .cursor-ring {
-    border-color: #ff620090;
-}
-.light-mode .cursor-dot.active {
-    transform: translate(-50%, -50%) scale(3.5);
-    background: #000000;
+body, .project-card, .skill {
+    transition: background 0.5s ease, color 0.5s ease;
 }
 
-.light-mode .cursor-ring.active {
-    transform: translate(-50%, -50%) scale(0.7);
-    border-color: #00000090;
-}
-
-.light-mode #contact a {
-    color: #000000;
-    text-decoration: none;
-}
-
-.light-mode .about-image img {
-    width: 200px; /* Adjust as needed */
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #000000a0; /* Optional */
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-}
-.light-mode .vertical-social a:hover {
-    opacity: 1;
-    color: #000000;
-}
-
-.light-mode .vertical-email a:hover {
-    opacity: 1;
-    color: #000000;
-}
-
-.light-mode #hero {
-    background: #f5f5f5;
-}
-
-body.light-mode #projects {
-    background: #f8f8f8;
-}
-
-body.light-mode .project-card {
-    background: #fff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-body.light-mode .project-card:hover {
-    box-shadow: 0 15px 30px rgba(255, 98, 0, 0.15);
-}
-
-body.light-mode .project-content {
-    color: #333;
-}
-
-body.light-mode .project-tech span {
-    background: rgba(255, 98, 0, 0.1);
-    color: #ff6200;
-}
-
-body.light-mode .project-overlay {
-    background: linear-gradient(to top, rgba(255, 98, 0, 0.5), transparent);
-}
-
-body.light-mode .btn.secondary {
-    border-color: #ff6200;
-    color: #ffffff;
-}
-
-body.light-mode .btn.secondary:hover {
-    background: rgb(255, 98, 0);
-}
-
-/* Project card text contrast */
-body.light-mode .project-card h3 {
-    color: #222;
-}
-
-body.light-mode .project-card p {
-    color: #555;
-}
