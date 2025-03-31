@@ -625,5 +625,5 @@ body.light-mode {
 
 .light-mode .vertical-email a:hover {
     opacity: 1;
-    color: #000000;
+    color: #fff;
 }
