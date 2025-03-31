@@ -273,3 +273,42 @@ document.head.appendChild(gradientStyle);
 
 // Start animation
 animateGradient();
+
+
+// Mobile Navigation
+const menuToggle = document.querySelector('.menu-toggle');
+const navRight = document.querySelector('.nav-right');
+const menuOverlay = document.querySelector('.menu-overlay');
+const navLinks = document.querySelectorAll('.nav-links li a');
+
+// Toggle menu
+function toggleMenu() {
+    menuToggle.classList.toggle('active');
+    navRight.classList.toggle('active');
+    menuOverlay.classList.toggle('active');
+    
+    // Prevent scrolling when menu is open
+    document.body.style.overflow = menuToggle.classList.contains('active') ? 'hidden' : '';
+}
+
+// Toggle menu on hamburger click
+menuToggle.addEventListener('click', toggleMenu);
+
+// Close menu when clicking the overlay
+menuOverlay.addEventListener('click', toggleMenu);
+
+// Close menu when clicking a nav link
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (menuToggle.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+});
+
+// Close menu on window resize if it expands beyond mobile size
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && menuToggle.classList.contains('active')) {
+        toggleMenu();
+    }
+});
