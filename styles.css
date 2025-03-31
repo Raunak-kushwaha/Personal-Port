@@ -14,6 +14,19 @@ html, body, a, button, div, span, p, h1, h2, h3, h4, h5, h6, li, ul, nav, sectio
 a:hover, button:hover, div:hover, span:hover, li:hover, .project:hover, .btn:hover, .scroll-top-btn:hover, .nav-links li a:hover {
     cursor: none !important;
 }
+/* Re-enable default cursor on touch devices */
+@media (pointer: coarse) {
+    *,
+    *:before,
+    *:after,
+    html, body, a, button, div, span, p, h1, h2, h3, h4, h5, h6, li, ul, nav, section,
+    a:hover, button:hover, div:hover, span:hover, li:hover, .project:hover, .btn:hover, .scroll-top-btn:hover, .nav-links li a:hover {
+        cursor: auto !important; /* Restore default cursor */
+    }
+    .cursor-dot, .cursor-ring, .cursor-background {
+        display: none; /* Already present, just confirming */
+    }
+}
 
 html {
     scroll-behavior: smooth;
@@ -26,6 +39,7 @@ body {
     line-height: 1.5;
     overflow-x: hidden;
     padding-top: 80px;
+    animation: none;
 }
 
 .cursor-dot {
@@ -110,7 +124,7 @@ body {
     display: block;
     width: 2px;
     height: 30px;
-    background: #ff6200;
+    background: #ffffff;
     opacity: 0.7;
     transform: rotate(-90deg) translateX(-50%) translateY(-50%);
 }
@@ -139,7 +153,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 40px;
+    padding: 15px 20px;
     z-index: 1000;
 }
 
@@ -161,7 +175,7 @@ body {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 15px;
     margin: 0;
     padding: 0;
 }
@@ -178,6 +192,37 @@ body {
 .nav-links li a:hover {
     color: #ff6200;
     transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .nav-right {
+        flex-direction: column;
+        width: 100%;
+    }
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .nav-links li a {
+        font-size: 1em;
+    }
+    .theme-switch {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+
+/* Vertical Social and Email */
+@media (max-width: 768px) {
+    .vertical-social, .vertical-email {
+        display: none; /* Hide on mobile to avoid overlap */
+    }
 }
 
 .vertical-email {
@@ -214,15 +259,22 @@ body {
 }
 
 .hero-content h1 {
-    font-size: 3.5em;
+    font-size: clamp(2em, 5vw, 3.5em);
     font-weight: 600;
     margin-bottom: 15px;
 }
 
 .hero-content p {
-    font-size: 1.5em;
+    font-size: clamp(1em, 3vw, 1.5em);
     font-weight: 300;
     margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    #hero {
+        padding: 10px;
+        min-height: 80vh;
+    }
 }
 
 #dynamic-text {
@@ -271,9 +323,10 @@ h2 {
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    padding: 150px;
-    padding-bottom: 250px;
+    padding: clamp(20px, 5vw, 150px); /* Responsive padding */
+    padding-bottom: clamp(40px, 10vw, 250px);
 }
+
 
 .animate.visible {
     opacity: 1;
@@ -283,7 +336,17 @@ h2 {
 .about-section {
     text-align: center;
     color: white;
-    padding: 150px;
+    padding: clamp(20px, 10vw, 150px);
+}
+
+@media (max-width: 768px) {
+    .about-container {
+        gap: 20px;
+    }
+    .about-image img {
+        width: 150px;
+        height: 150px;
+    }
 }
 
 .about-heading {
@@ -327,10 +390,19 @@ h2 {
 
 .skills-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
     max-width: 900px;
     margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+    .skill {
+        padding: 10px;
+    }
+    .skill span {
+        font-size: 0.9em;
+    }
 }
 
 .skill {
@@ -387,6 +459,21 @@ h2 {
 #projects {
     padding: 100px 20px;
     background: #2329317e;
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+    }
+    .project-card.featured {
+        grid-column: span 1; /* Remove spanning on mobile */
+    }
+    .project-image {
+        height: 200px;
+    }
+    .project-card.featured .project-image {
+        height: 250px; /* Slightly larger but not excessive */
+    }
 }
 
 .projects-grid {
@@ -534,16 +621,27 @@ input:checked + .slider:before {
     transform: translateX(26px);
 }
 
+a:focus, button:focus, .btn:focus, .hello-btn:focus {
+    outline: 2px solid #ff6200;
+    outline-offset: 2px;
+}
+
 /* Light Mode Styles (keep your existing ones) */
 body.light-mode {
     margin: auto;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     overflow: auto;
-    background: linear-gradient(315deg, #ccccff 3%, #e9ccff 38%, #ccffff 68%, #ffccff 98%);
-    animation: gradient 15s ease infinite;
-    background-size: 400% 400%;
+    background: linear-gradient(315deg, #C2E9FB 3%, #A1C4FD   38%, #B5FFFC 68%, #ccccff  98%);
+    animation: gradient 20s ease infinite;
+    background-size: 200% 200%;
     background-attachment: fixed;
-    color: #333;
+    color: #1a1a1a;
+}
+
+.light-mode .nav-links li a,
+.light-mode .vertical-social a,
+.light-mode .vertical-email a {
+    color: #1a1a1a;
 }
 
 .light-mode .navbar {
@@ -615,7 +713,7 @@ body, .project-card, .skill, .navbar, footer {
     color: #333;
 }
 
-.light-mode .vertical-social a:hover {
+.light-mode .vertical-social a:hover .vertical-social::before {
     opacity: 1;
     color: #333;
 }
@@ -644,6 +742,19 @@ body, .project-card, .skill, .navbar, footer {
     padding: 60px 20px;
 }
 
+@media (max-width: 768px) {
+    #contact {
+        padding: 40px 10px;
+    }
+    .contact-content {
+        font-size: clamp(14px, 4vw, 20px);
+    }
+    .hello-btn {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
+
 .contact-content {
     margin-bottom: 15px;
     max-width: 700px;
@@ -660,8 +771,8 @@ body, .project-card, .skill, .navbar, footer {
     background: transparent;
     color: #ff6200;
     border: 2px solid #ff6200;
-    padding: 15px 15px;
-    border-radius: 5px;
+    padding: 8px 15px;
+    border-radius: 6px;
     font-size: 1.3em;
     font-weight: 500;
     text-decoration: none;
@@ -686,12 +797,12 @@ body, .project-card, .skill, .navbar, footer {
 .hello-btn::after {
     content: '';
     position: absolute;
-    top: -10px;
+    top: 0px;
     left: -10px;
     right: -10px;
-    bottom: -10px;
+    bottom: 0px;
     border: 2px solid #ff6200;
-    border-radius: 10px;
+    border-radius: 9px;
     animation: ring-pulse 2s infinite;
     opacity: 0;
 }
@@ -725,6 +836,16 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin-top: 80px;
     position: relative;
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 15px 0;
+        margin-top: 40px;
+    }
+    footer p {
+        font-size: 0.8em;
+    }
 }
 
 .footer-content {
@@ -784,7 +905,7 @@ body {
     margin: auto;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     overflow: auto;
-    background: linear-gradient(315deg, #00001a 3%, #0e001a 38%, #001a1a 68%, #1a001a 98%);
+    background: linear-gradient(315deg, #00001a 3%, #0e001a 38%, #001a1a 68%, #00001a 98%);
     animation: gradient 15s ease infinite;
     background-size: 400% 400%;
     background-attachment: fixed;

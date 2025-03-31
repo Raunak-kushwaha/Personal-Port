@@ -202,16 +202,6 @@ document.addEventListener('mouseup', () => {
     cursorRing.classList.remove('clicked');
 });
 
-// Touch support for mobile
-document.addEventListener('touchstart', () => {
-    cursorDot.classList.add('clicked');
-    cursorRing.classList.add('clicked');
-});
-
-document.addEventListener('touchend', () => {
-    cursorDot.classList.remove('clicked');
-    cursorRing.classList.remove('clicked');
-});
 
 // Cursor-following background gradient
 document.addEventListener('mousemove', (e) => {
