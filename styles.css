@@ -730,10 +730,8 @@ body.light-mode {
     margin: auto;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     overflow: auto;
-    background: linear-gradient(315deg, #C2E9FB 3%, #A1C4FD   38%, #B5FFFC 68%, #ccccff  98%);
-    animation: gradient 20s ease infinite;
-    background-size: 200% 200%;
-    background-attachment: fixed;
+    background: #FEFFFFF2;
+background: linear-gradient(90deg, rgba(254, 255, 255, 1) 0%, rgba(255, 248, 232, 1) 8%, rgba(244, 255, 255, 1) 29%, rgba(223, 255, 233, 1) 66%, rgba(255, 255, 235, 1) 83%, rgba(255, 255, 255, 1) 100%);
     color: #1a1a1a;
 }
 
@@ -789,7 +787,7 @@ body.light-mode {
 
 .light-mode footer {
     background: rgb(255, 255, 255);
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    
 }
 
 .light-mode footer p {
@@ -1010,10 +1008,8 @@ body {
     margin: auto;
     
     overflow: auto;
-    background: linear-gradient(315deg, #00001a 3%, #0e001a 38%, #001a1a 68%, #00001a 98%);
-    animation: gradient 15s ease infinite;
-    background-size: 400% 400%;
-    background-attachment: fixed;
+    background: #01000d;
+background: linear-gradient(90deg, rgba(1, 0, 13, 1) 0%, rgba(0, 7, 23, 1) 8%, rgba(11, 0, 23, 1) 29%, rgba(32, 0, 54, 1) 66%, rgba(0, 0, 20, 1) 83%, rgba(0, 0, 0, 1) 100%);
 }
 
 
