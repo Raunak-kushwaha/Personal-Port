@@ -745,7 +745,7 @@ body.light-mode {
 
 .light-mode .navbar {
     background: rgba(255, 255, 255, 0.364);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    
 }
 
 .light-mode .nav-links li a {
@@ -753,9 +753,14 @@ body.light-mode {
 }
 
 .light-mode .nav-links li a:hover {
-    color: rgb(255, 98, 0);
+    color: #ff6200;
 }
-
+.light-mode .vertical-email a:hover {
+    color: #ff6200;
+}
+.light-mode .vertical-social a:hover{
+    color: #ff6200;
+}
 .light-mode .btn {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
@@ -1011,17 +1016,7 @@ body {
     background-attachment: fixed;
 }
 
-@keyframes gradient {
-    0% {
-        background-position: 0% 0%;
-    }
-    50% {
-        background-position: 100% 100%;
-    }
-    100% {
-        background-position: 0% 0%;
-    }
-}
+
 
 
 /* Improved Mobile Navigation */
