@@ -94,7 +94,7 @@ if (window.matchMedia("(pointer: fine)").matches) {
         const currentY = parseFloat(cursorRing.style.top || 0);
 
         // Interpolate the ring's position toward the dot's position
-        const ease = 0.3; // Adjust this value for more/less delay (0.05 = slower, 0.2 = faster)
+        const ease = .1; // Adjust this value for more/less delay (0.05 = slower, 0.2 = faster)
         const newX = currentX + (ringX - currentX) * ease;
         const newY = currentY + (ringY - currentY) * ease;
 
