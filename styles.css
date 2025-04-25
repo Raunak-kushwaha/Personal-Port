@@ -4,83 +4,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: none !important;
-}
-
-html, body, a, button, div, span, p, h1, h2, h3, h4, h5, h6, li, ul, nav, section {
-    cursor: none !important;
-}
-
-a:hover, button:hover, div:hover, span:hover, li:hover, .project:hover, .btn:hover, .scroll-top-btn:hover, .nav-links li a:hover {
-    cursor: none !important;
-}
-/* Re-enable default cursor on touch devices */
-/* First, let's improve the mobile cursor detection */
-@media (pointer: coarse) {
-    *,
-    *:before,
-    *:after,
-    html, body, a, button, div, span, p, h1, h2, h3, h4, h5, h6, li, ul, nav, section,
-    a:hover, button:hover, div:hover, span:hover, li:hover, .project:hover, .btn:hover, .scroll-top-btn:hover, .nav-links li a:hover {
-        cursor: auto !important; /* Restore default cursor for touch devices */
-    }
-    
-    /* Ensure the custom cursor elements are hidden on touch devices */
-    .cursor-dot, .cursor-ring, .cursor-background {
-        display: none !important;
-    }
-
-    /* Make sure the menu elements are properly clickable on mobile */
-    .nav-links li a, 
-    .menu-toggle, 
-    .theme-switch,
-    .btn,
-    .hello-btn,
-    .project-links a {
-        pointer-events: auto !important;
-        cursor: pointer !important;
-    }
-    
-    /* Improve tap target sizes for mobile */
-    .nav-links li a {
-        padding: 15px !important;
-        display: block !important;
-        width: 100% !important;
-    }
-    
-    /* Ensure the close button (X) is properly clickable */
-    .menu-toggle.active {
-        position: fixed !important;
-        top: 20px !important;
-        right: 20px !important;
-    }
-    
-    /* Fix the z-index stacking for mobile menu items */
-    .nav-right.active {
-        z-index: 1002 !important;
-    }
-}
-
-/* Additional improvements for the mobile navigation */
-.menu-toggle {
-    position: relative;
-    z-index: 1003;
-    background: transparent;
-    border: none;
-    outline: none;
-    padding: 10px;
-}
-
-/* Ensure the navigation links are clickable */
-.nav-links li a {
-    position: relative;
-    z-index: 1003;
-}
-
-/* Ensure the theme switch is clickable */
-.theme-switch {
-    position: relative;
-    z-index: 1003;
 }
 
 html {
@@ -88,80 +11,22 @@ html {
 }
 
 body {
-    font-family: 'Funnel Display';
-    background: #232931;
+    font-family: 'funnel display', sans-serif;
+    background-image: url("img/d4.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
     color: #fff;
     line-height: 1.5;
     overflow-x: hidden;
     padding-top: 80px;
     animation: none;
-}
-
-.cursor-dot {
-    position: fixed;
-    width: 4px;
-    height: 4px;
-    background: #ff6200;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s cubic-bezier(0.22, 1, 0.36, 1), background 0.1s ease;
-}
-
-
-.cursor-ring {
-    position: fixed;
-    width: 30px;
-    height: 30px;
-    border: 2px solid #ff620090;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
-}
-
-.cursor-dot.clicked {
-    transform: translate(-50%, -50%) scale(4);
-    background: #ffffff;
-    opacity: 0.5;
+    margin: auto;
+    overflow: auto;
     
 }
 
-.cursor-ring.clicked {
-    transform: translate(-50%, -50%) scale(0.5);
-    border-color: #ffffff90;
-    opacity: 0;
-}
-
-.cursor-dot.active {
-    transform: translate(-50%, -50%) scale(3.5);
-    background: #ffffffcc;
-}
-
-.cursor-ring.active {
-    transform: translate(-50%, -50%) scale(.7);
-    border-color: #ffffff90;
-}
-
-@media (pointer: coarse) {
-    .cursor-dot, .cursor-ring {
-        display: none;
-    }
-}
-
-.cursor-background {
-    position: fixed;
-    width: 250px; /* Large size, adjust as needed */
-    height: 250px;
-    background: rgba(255, 217, 0, 0.607); /* Light yellow, semi-transparent */
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: -1; /* Behind all content */
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease; /* Smooth scaling if desired */
-}
 .vertical-social {
     position: fixed;
     left: 65px;
@@ -306,7 +171,6 @@ body {
 
 #hero {
     min-height: 100vh;
-    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -315,7 +179,8 @@ body {
 }
 
 .hero-content h1 {
-    font-size: clamp(2em, 5vw, 3.5em);
+    font-family: 'Astro-Futuristic', sans-serif;
+    font-size: clamp(1em, 3vw, 5.5em);
     font-weight: 600;
     margin-bottom: 15px;
     margin-top: 10px;
@@ -326,6 +191,7 @@ body {
     font-weight: 300;
     margin-bottom: 15px;
 }
+
 /* Media queries for mobile responsiveness */
 @media screen and (max-width: 768px) {
     #hero {
@@ -337,7 +203,7 @@ body {
     }
     
     .hero-content h1 {
-      font-size: 2.5rem;
+      font-size: 1.5rem;
     }
     
     .hero-content p {
@@ -349,18 +215,18 @@ body {
       font-size: 1.25rem;
       margin-top: 1rem;
     }
-  }
-  
-  /* For even smaller screens */
-  @media screen and (max-width: 480px) {
+}
+
+/* For even smaller screens */
+@media screen and (max-width: 480px) {
     .hero-content h1 {
-      font-size: 7rem;
+      font-size: 4rem;
     }
     
     .hero-content p {
       font-size: 2rem;
     }
-  }
+}
 
 #dynamic-text {
     color: #ff6200;
@@ -369,15 +235,13 @@ body {
     overflow: hidden;
     animation: blinkCursor 0.7s step-end infinite;
     font-family: "Press Start 2P", system-ui;
-    
-  font-style: normal;
+    font-style: normal;
 }
-
 h4 {
     font-family: "Press Start 2P", system-ui;
-    
-  font-style: normal;
+    font-style: normal;
 }
+
 @keyframes blinkCursor {
     50% {
         border-color: transparent;
@@ -386,7 +250,7 @@ h4 {
 
 .btn {
     display: inline-block;
-    background: #ff6200;
+    background: #00000040;
     color: #fff;
     padding: 10px 25px;
     text-decoration: none;
@@ -397,7 +261,7 @@ h4 {
 }
 
 .btn:hover {
-    background: #e55a00;
+    background: #38383835;
     transform: scale(1.05);
 }
 
@@ -422,7 +286,6 @@ h2 {
     margin-top: 10px;
     margin-bottom: 100px;
 }
-
 
 .animate.visible {
     opacity: 1;
@@ -495,7 +358,6 @@ h2 {
     gap: 20px;
     max-width: 900px;
     margin: 0 auto;
-    
 }
 
 @media (max-width: 480px) {
@@ -539,7 +401,6 @@ h2 {
 .skill:hover {
     transform: scale(1.05);
     transition: transform 0.3s ease-in-out;
-    
 }
 
 .skill-bar {
@@ -676,7 +537,7 @@ h2 {
     background: rgba(255, 98, 0, 0.1);
 }
 
-/* New Theme Switch Styles */
+/* Theme Switch Styles */
 .theme-switch {
     position: relative;
     display: inline-block;
@@ -724,14 +585,14 @@ input:checked + .slider:before {
     transform: translateX(26px);
 }
 
-
-/* Light Mode Styles (keep your existing ones) */
+/* Light Mode Styles */
 body.light-mode {
     margin: auto;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    
     overflow: auto;
-    background: #FEFFFFF2;
-background: linear-gradient(90deg, rgba(254, 255, 255, 1) 0%, rgba(255, 248, 232, 1) 8%, rgba(244, 255, 255, 1) 29%, rgba(223, 255, 233, 1) 66%, rgba(255, 255, 235, 1) 83%, rgba(255, 255, 255, 1) 100%);
+    background-image: url("img/whitegrad.jpg");
+    background-size: cover;
+
     color: #1a1a1a;
 }
 
@@ -743,7 +604,6 @@ background: linear-gradient(90deg, rgba(254, 255, 255, 1) 0%, rgba(255, 248, 232
 
 .light-mode .navbar {
     background: rgba(255, 255, 255, 0.364);
-    
 }
 
 .light-mode .nav-links li a {
@@ -753,20 +613,24 @@ background: linear-gradient(90deg, rgba(254, 255, 255, 1) 0%, rgba(255, 248, 232
 .light-mode .nav-links li a:hover {
     color: #ff6200;
 }
+
 .light-mode .vertical-email a:hover {
     color: #ff6200;
 }
-.light-mode .vertical-social a:hover{
+
+.light-mode .vertical-social a:hover {
     color: #ff6200;
 }
+
 .light-mode .btn {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    color: #000000;
+    background-color: #dddddd41;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);
 }
 
 .light-mode .skill {
     background: #f9f9fb;
     color: #333;
-    
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -780,14 +644,11 @@ background: linear-gradient(90deg, rgba(254, 255, 255, 1) 0%, rgba(255, 248, 232
 }
 
 .light-mode .about-section {
-    
-
     color: #333;
 }
 
 .light-mode footer {
     background: rgb(255, 255, 255);
-    
 }
 
 .light-mode footer p {
@@ -810,6 +671,7 @@ body, .project-card, .skill, .navbar, footer {
 .light-mode .slider:before {
     background-color: rgb(0, 0, 0);
 }
+
 .light-mode .vertical-email a:hover {
     opacity: 1;
     color: #333;
@@ -822,7 +684,6 @@ body, .project-card, .skill, .navbar, footer {
 
 .light-mode .slider {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-
 }
 
 .light-mode .nav-logo .profile-img {
@@ -834,8 +695,6 @@ body, .project-card, .skill, .navbar, footer {
     border: 2px solid #ff6200a5;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
 }
-
-
 
 #contact {
     display: flex;
@@ -879,7 +738,6 @@ body, .project-card, .skill, .navbar, footer {
     font-size: 1.3em;
     font-weight: 500;
     text-decoration: none;
-    cursor: none;
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
@@ -928,7 +786,6 @@ body, .project-card, .skill, .navbar, footer {
         margin-bottom: 30px;
     }
 }
-
 
 footer {
     background: rgba(35, 41, 49, 0.600);
@@ -993,27 +850,6 @@ body.light-mode footer p {
 footer {
     animation: float-up 0.6s ease-out forwards;
 }
-
-
-
-body::before {
-    animation: float 25s infinite linear;
-}
-
-body, .project-card, .skill {
-    transition: background 0.5s ease, color 0.5s ease;
-}
-
-body {
-    margin: auto;
-    
-    overflow: auto;
-    background: #01000d;
-background: linear-gradient(90deg, rgba(1, 0, 13, 1) 0%, rgba(0, 7, 23, 1) 8%, rgba(11, 0, 23, 1) 29%, rgba(32, 0, 54, 1) 66%, rgba(0, 0, 20, 1) 83%, rgba(0, 0, 0, 1) 100%);
-}
-
-
-
 
 /* Improved Mobile Navigation */
 .menu-toggle {
@@ -1202,4 +1038,9 @@ body.light-mode .menu-toggle span {
     }
 }
 
-
+@font-face {
+    font-family: 'Astro-Futuristic'; /* Choose a name for your font */
+    src:    url('fonts/as.ttf') format('truetype');
+    font-weight: normal; /* Define font weight if applicable (e.g., bold, normal) */
+    font-style: normal;  /* Define font style if applicable (e.g., italic, normal) */
+  }
