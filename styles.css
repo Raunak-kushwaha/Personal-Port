@@ -656,7 +656,7 @@ body.light-mode {
 }
 
 .light-mode .hello-btn {
-    background-color: #ffffff75;
+    background-color: #ffffff32;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -674,7 +674,7 @@ body, .project-card, .skill, .navbar, footer {
 
 .light-mode .vertical-email a:hover {
     opacity: 1;
-    color: #333;
+    color: #ff6200;
 }
 
 .light-mode .vertical-social a:hover .vertical-social::before {
@@ -741,7 +741,7 @@ body, .project-card, .skill, .navbar, footer {
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
-    background-color: #2a2a2a74;
+    background-color: #0000001c;
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
                 background-color 0.3s ease,
                 box-shadow 0.3s ease;
